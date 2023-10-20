@@ -23,11 +23,18 @@ public class SubNode extends Node {
             in(2)._type instanceof TypeInteger i1) {
             if (i0.isConstant() && i1.isConstant())
                 return TypeInteger.constant(i0.value()-i1.value());
+            return i0.meet(i1);
         }
         return Type.BOTTOM;
     }
 
     @Override
-    public Node idealize() { return null; }
+    public Node idealize() {
+        // Sub of same is 0
+        if( in(1)==in(2) )
+            return new ConstantNode(TypeInteger.constant(0));
+
+        return null;
+    }
 
 }

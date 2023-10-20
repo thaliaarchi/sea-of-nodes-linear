@@ -11,6 +11,13 @@ import java.util.*;
 public class ScopeNode extends Node {
 
     /**
+     * The control is a name that binds to the currently active control
+     * node in the graph
+     */
+    public static final String CTRL = "$ctrl";
+    public static final String ARG0 = "arg";
+
+    /**
      * Names for every input edge
      */
     public final Stack<HashMap<String, Integer>> _scopes;
