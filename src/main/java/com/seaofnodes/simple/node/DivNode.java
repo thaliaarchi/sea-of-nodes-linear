@@ -32,4 +32,6 @@ public class DivNode extends Node {
 
     @Override
     public Node idealize() { return null; }
+
+    @Override Node copy(Node lhs, Node rhs) { return new DivNode(lhs,rhs); }
 }

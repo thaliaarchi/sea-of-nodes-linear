@@ -43,10 +43,6 @@ public class Type {
 
     public StringBuilder _print(StringBuilder sb) {return is_simple() ? sb.append(STRS[_type]) : sb;}
 
-    public Type meet(Type other) { return Type.BOTTOM; }
+    public Type meet(Type other) { return BOTTOM; }
 
-    @Override
-    public final String toString() {
-        return _print(new StringBuilder()).toString();
-    }
 }
