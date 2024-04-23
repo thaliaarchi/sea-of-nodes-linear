@@ -35,6 +35,14 @@ public class SubNode extends Node {
         if( in(1)==in(2) )
             return new ConstantNode(TypeInteger.constant(0));
 
+        // x - (-y) is x+y
+        if( in(2) instanceof MinusNode minus )
+            return new AddNode(in(1),minus.in(1));
+
+        // (-x) - y is -(x+y)
+        if( in(1) instanceof MinusNode minus )
+            return new MinusNode(new AddNode(minus.in(1),in(2)).peephole());
+
         return null;
     }
 
